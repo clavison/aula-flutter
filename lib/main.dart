@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   containerBuild({Color bgColor = Colors.yellowAccent, double w = 50, double h = 50, double radius = 0}) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(5),
       width: w,
       height: h,
       decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(radius)),
@@ -30,15 +30,16 @@ class _MyAppState extends State<MyApp> {
           body: Center(
             child: Container(
               color: Colors.black,
-              width: 300,
-              height: 300,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              width: 250,
+              height: 250,
+              child: Wrap(
+                alignment: WrapAlignment.center,
                 children: [
-                  Expanded(flex: 1, child: containerBuild()),
-                  Expanded(flex: 2, child: containerBuild()),
-                  Expanded(flex: 3, child: containerBuild()),
-                  Expanded(flex: 4, child: containerBuild()),
+                  containerBuild(),
+                  containerBuild(),
+                  containerBuild(),
+                  containerBuild(),
+                  containerBuild(),
                 ],
               ),
             ),
