@@ -26,15 +26,21 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: const Text("App Bar")),
-        body: Builder(builder: (context) {
-          return Container(
-            height: MediaQuery.of(context).size.height / 2,
-            width: MediaQuery.of(context).size.width / 2,
-            color: Colors.black,
-          );
-        }),
-      ),
+          appBar: AppBar(title: const Text("App Bar")),
+          body: Container(
+            height: double.infinity,
+            width: double.infinity,
+            color: Colors.grey,
+            child: Center(
+              child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+                return Container(
+                  color: Colors.yellow,
+                  width: constraints.maxWidth * 0.5,
+                  height: constraints.maxHeight * 0.2,
+                );
+              }),
+            ),
+          )),
     );
   }
 }
