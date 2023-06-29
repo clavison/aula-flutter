@@ -12,31 +12,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  containerBuild() {
+    return Container(
+      color: Colors.red,
+      margin: const EdgeInsets.all(3),
+      width: 50,
+      height: 50,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "MaterialApp",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(title: const Text("AppBar")),
-          body: Center(
-            child: Container(
-              alignment: Alignment.topLeft,
-              width: 300,
-              height: 250,
-              padding: const EdgeInsets.all(30),
-              //color: Colors.yellow,
-              decoration: BoxDecoration(
-                color: Colors.yellow, //ao utilizar o decoration a cor deve estar nele
-                border: Border.all(
-                  color: Colors.black,
-                  width: 3.0,
-                ),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: const Text("Um container amarelo", style: TextStyle(fontSize: 20)),
-            ),
-          )),
+        appBar: AppBar(title: const Text("AppBar")),
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [containerBuild(), containerBuild(), containerBuild()],
+        ),
+      ),
     );
   }
 }
