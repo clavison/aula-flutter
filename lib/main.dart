@@ -15,25 +15,30 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "MaterialApp",
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          brightness: Brightness.light, // Define o tema como dark
-          primaryColor: Colors.blue, //cor primaria do APP
-          fontFamily: 'Roboto', // Fonte padrão do aplicativo
-          appBarTheme: const AppBarTheme(color: Colors.deepPurple),
-        ),
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text("AppBar"),
-            actions: const [Icon(Icons.exit_to_app), Icon(Icons.edit_note)],),
-          body: const Text("Conteúdo do Scaffold"),
-          drawer: const Drawer(),
-          bottomNavigationBar: BottomNavigationBar(items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Perfil"),
-          ]),
-          floatingActionButton: const FloatingActionButton(onPressed: null,child: Icon(Icons.add),),
-        ));
+      title: "MaterialApp",
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          appBar: AppBar(title: const Text("AppBar")),
+          body: Center(
+            child: Container(
+              alignment: Alignment.topLeft,
+              width: 300,
+              height: 250,
+              padding: const EdgeInsets.all(30),
+              //color: Colors.yellow,
+              decoration: BoxDecoration(
+                color: Colors.yellow,
+                border: Border.all(
+                  color: Colors.black,
+                  width: 3.0,
+                ),
+              ),
+              child: const Text(
+                "Um container amarelo",
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+          )),
+    );
   }
 }
