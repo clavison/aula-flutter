@@ -27,16 +27,14 @@ class _MyAppState extends State<MyApp> {
               padding: const EdgeInsets.all(30),
               //color: Colors.yellow,
               decoration: BoxDecoration(
-                color: Colors.yellow,
+                color: Colors.yellow, //ao utilizar o decoration a cor deve estar nele
                 border: Border.all(
                   color: Colors.black,
                   width: 3.0,
                 ),
+                borderRadius: BorderRadius.circular(20),
               ),
-              child: const Text(
-                "Um container amarelo",
-                style: TextStyle(fontSize: 20),
-              ),
+              child: const Text("Um container amarelo", style: TextStyle(fontSize: 20)),
             ),
           )),
     );
