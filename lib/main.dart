@@ -28,8 +28,9 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text("AppBar")),
-        body: Row(
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [containerBuild(), containerBuild(), containerBuild()],
         ),
       ),
