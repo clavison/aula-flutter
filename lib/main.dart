@@ -35,12 +35,12 @@ class _MyAppState extends State<MyApp> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                Expanded(child: containerBuild()),
-                Expanded(child: containerBuild()),
-                Expanded(child: containerBuild()),
-                Expanded(child: containerBuild()),
-                Expanded(child: containerBuild()),
-              ]),
+                  Expanded(flex: 1, child: containerBuild()),
+                  Expanded(flex: 2, child: containerBuild()),
+                  Expanded(flex: 3, child: containerBuild()),
+                  Expanded(flex: 4, child: containerBuild()),
+                ],
+              ),
             ),
           )),
     );
