@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  containerBuild({Color bgColor = Colors.yellowAccent, double w = 100, double h = 100, double radius = 0}) {
+  containerBuild({Color bgColor = Colors.yellowAccent, double w = 100, double h = 50, double radius = 0}) {
     return Container(
       margin: const EdgeInsets.all(5),
       width: w,
@@ -27,26 +27,18 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text("App Bar")),
-        body: SingleChildScrollView(
-          child: Column(
+        body: OrientationBuilder(builder: (context, orientation) {
+          return GridView.count(
+            crossAxisCount: orientation == Orientation.portrait ? 3 : 5,
             children: [
-              containerBuild(bgColor: Colors.red),
-              containerBuild(bgColor: Colors.green),
-              containerBuild(bgColor: Colors.blue),
-              containerBuild(bgColor: Colors.yellow),
-              containerBuild(bgColor: Colors.grey),
-              containerBuild(bgColor: Colors.purple),
-              containerBuild(bgColor: Colors.indigo),
-              containerBuild(bgColor: Colors.red),
-              containerBuild(bgColor: Colors.green),
-              containerBuild(bgColor: Colors.blue),
-              containerBuild(bgColor: Colors.yellow),
-              containerBuild(bgColor: Colors.grey),
-              containerBuild(bgColor: Colors.purple),
-              containerBuild(bgColor: Colors.indigo),
+              containerBuild(),
+              containerBuild(),
+              containerBuild(),
+              containerBuild(),
+              containerBuild(),
             ],
-          ),
-        ),
+          );
+        }),
       ),
     );
   }
