@@ -23,27 +23,17 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    List<Color> cores = [Colors.red, Colors.green, Colors.blue, Colors.deepPurple,
+                        Colors.yellow, Colors.grey, Colors.black, Colors.pink];
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text("Imagem 200 X 200")),
-        body: ListView(
-          children: [
-            containerBuild(bgColor: Colors.red),
-            containerBuild(bgColor: Colors.green),
-            containerBuild(bgColor: Colors.blue),
-            containerBuild(bgColor: Colors.yellow),
-            containerBuild(bgColor: Colors.grey),
-            containerBuild(bgColor: Colors.purple),
-            containerBuild(bgColor: Colors.indigo),
-            containerBuild(bgColor: Colors.red),
-            containerBuild(bgColor: Colors.green),
-            containerBuild(bgColor: Colors.blue),
-            containerBuild(bgColor: Colors.yellow),
-            containerBuild(bgColor: Colors.grey),
-            containerBuild(bgColor: Colors.purple),
-            containerBuild(bgColor: Colors.indigo),
-          ],
+        body: ListView.builder(
+          itemCount: cores.length,
+          itemBuilder: (BuildContext context, int index) {
+            return containerBuild(bgColor: cores[index]);
+          },
         ),
       ),
     );
