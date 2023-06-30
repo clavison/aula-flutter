@@ -27,22 +27,11 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text("App Bar")),
-        body: Stack(
-          children: [
-            Align(
-              alignment: const Alignment(-0.75, -0.75),
-              child: containerBuild(bgColor: Colors.red),
-            ),
-            Align(
-              alignment: const Alignment(0, 0),
-              child: containerBuild(bgColor: Colors.green),
-            ),
-            Align(
-              alignment: const Alignment(0.75, 0.75),
-              child: containerBuild(bgColor: Colors.blue),
-            ),
-          ],
-        )
+        body: OrientationBuilder(builder: (context, orientation) {
+          return orientation == Orientation.portrait
+              ? containerBuild(w: double.infinity, h: double.infinity, bgColor: Colors.red)
+              : containerBuild(w: double.infinity, h: double.infinity, bgColor: Colors.green);
+        }),
       ),
     );
   }
