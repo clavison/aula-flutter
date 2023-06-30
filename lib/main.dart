@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  containerBuild({Color bgColor = Colors.yellowAccent, double w = 50, double h = 50, double radius = 0}) {
+  containerBuild({Color bgColor = Colors.yellowAccent, double w = 100, double h = 100, double radius = 0}) {
     return Container(
       margin: const EdgeInsets.all(5),
       width: w,
@@ -26,24 +26,24 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(title: const Text("App Bar")),
-          body: Center(
-            child: Container(
-              color: Colors.black,
-              width: 250,
-              height: 250,
-              child: Wrap(
-                alignment: WrapAlignment.center,
-                children: [
-                  containerBuild(),
-                  containerBuild(),
-                  containerBuild(),
-                  containerBuild(),
-                  containerBuild(),
-                ],
-              ),
+        appBar: AppBar(title: const Text("App Bar")),
+        body: Stack(
+          children: [
+            Align(
+              alignment: const Alignment(-0.75, -0.75),
+              child: containerBuild(bgColor: Colors.red),
             ),
-          )),
+            Align(
+              alignment: const Alignment(0, 0),
+              child: containerBuild(bgColor: Colors.green),
+            ),
+            Align(
+              alignment: const Alignment(0.75, 0.75),
+              child: containerBuild(bgColor: Colors.blue),
+            ),
+          ],
+        )
+      ),
     );
   }
 }
