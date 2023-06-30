@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  containerBuild({Color bgColor = Colors.yellowAccent, double w = 100, double h = 50, double radius = 0}) {
+  containerBuild({Color bgColor = Colors.yellowAccent, double w = 100, double h = 100, double radius = 0}) {
     return Container(
       margin: const EdgeInsets.all(5),
       width: w,
@@ -27,15 +27,16 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text("App Bar")),
-        body:GridView.extent(
-          maxCrossAxisExtent: 150,
-            children: [
-              containerBuild(),
-              containerBuild(),
-              containerBuild(),
-              containerBuild(),
-              containerBuild(),
-            ],
+        body: Container(
+          alignment: Alignment.topLeft,
+          width: 300,
+          height: 400,
+          color: Colors.black,
+          child: FractionallySizedBox(
+            widthFactor: 0.8,
+            heightFactor: 0.1,
+            child: containerBuild() ,
+          ),
         ),
       ),
     );
