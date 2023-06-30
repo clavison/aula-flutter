@@ -12,14 +12,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  containerBuild({Color bgColor = Colors.yellowAccent, double w = 100, double h = 100, double radius = 0}) {
-    return Container(
-      margin: const EdgeInsets.all(5),
-      width: w,
-      height: h,
-      decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(radius)),
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +20,32 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text("App Bar")),
-        body: Container(
-          alignment: Alignment.topLeft,
-          width: 300,
-          height: 400,
-          color: Colors.black,
-          child: FractionallySizedBox(
-            widthFactor: 0.8,
-            heightFactor: 0.1,
-            child: containerBuild() ,
-          ),
-        ),
+        body: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text("Texto simples"),
+              SizedBox(height: 10),
+              Text("Texto com estilo", style: TextStyle(color: Colors.red, fontSize: 20, fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              Text("Por padrão quando um texto não cabe no espaço destinado a ele, ocorre uma quebra de linha", style: TextStyle(color: Colors.purple, fontSize: 18)),
+              SizedBox(height: 10),
+              Text("Alterando a propriedade softWrap = false a quebra de linha não ocorre mais.", softWrap: false, style: TextStyle(color: Colors.green, fontSize: 18)),
+              SizedBox(height: 10),
+              Text("A propriedade overflow configura o tratamento.", softWrap: false, style: TextStyle(color: Colors.black, fontSize: 12)),
+              SizedBox(height: 10),
+              Text("overflow = TextOverflow.clip corta xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.", overflow: TextOverflow.clip, softWrap: false, style: TextStyle(fontSize: 18)),
+              SizedBox(height: 10),
+              Text("overflow = TextOverflow.fade desvanece xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.", overflow: TextOverflow.fade, softWrap: false, style: TextStyle(fontSize: 18)),
+              SizedBox(height: 10),
+              Text("overflow = TextOverflow.ellipsis acrescrenta  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.", overflow: TextOverflow.ellipsis, softWrap: false, style: TextStyle(fontSize: 18)),
+              SizedBox(height: 10),
+              Text("A propriedade maxLines configura o limite máximo de linhas que o texto poderá utilizar antes de ocorrer a quebra e o tratamento configurado", maxLines: 2, overflow: TextOverflow.ellipsis, softWrap: false, style: TextStyle(fontSize: 18)),
+        
+        
+          ],),
+        )
       ),
     );
   }
