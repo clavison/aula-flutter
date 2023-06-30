@@ -27,9 +27,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text("App Bar")),
-        body: OrientationBuilder(builder: (context, orientation) {
-          return GridView.count(
-            crossAxisCount: orientation == Orientation.portrait ? 3 : 5,
+        body:GridView.extent(
+          maxCrossAxisExtent: 150,
             children: [
               containerBuild(),
               containerBuild(),
@@ -37,8 +36,7 @@ class _MyAppState extends State<MyApp> {
               containerBuild(),
               containerBuild(),
             ],
-          );
-        }),
+        ),
       ),
     );
   }
