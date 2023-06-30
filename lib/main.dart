@@ -12,14 +12,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  String txtDigitado = '';
+  TextEditingController txtController = TextEditingController();
 
-  String tipoBtn = 'Não identificado';
-
-    void cliqueBotao(String texto) {
-      setState(() {
-        tipoBtn = texto;
-      });
-    }
+  void cliqueBotao() {
+    setState(() {
+      txtDigitado = txtController.text.toUpperCase();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +31,11 @@ class _MyAppState extends State<MyApp> {
             padding: const EdgeInsets.all(15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(tipoBtn, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink)),
-                ElevatedButton(onPressed: () => cliqueBotao('ElevatedButton'), child: const Text('ElevatedButton')),
-                TextButton(onPressed: () => cliqueBotao('TextButton'), child: const Text('TextButton')),
-                OutlinedButton(onPressed: () => cliqueBotao('OutlinedButton'), child: const Text('OutlinedButton')),
-                IconButton(onPressed: () => cliqueBotao('IconButton'), icon: const Icon(Icons.home, color: Colors.red, size: 64)),
-                FloatingActionButton(onPressed: () => cliqueBotao('FloatingActionButton'), child: const Icon(Icons.add, color: Colors.white, size: 32)),
+                Text(txtDigitado, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink)),
+                TextField(controller: txtController, keyboardType: TextInputType.number),
+                ElevatedButton(onPressed: cliqueBotao, child: const Text('OK')),
               ],
             ),
           )),
