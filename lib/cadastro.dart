@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'package:aula_flutter/components/myButton.dart';
+import 'package:aula_flutter/components/myTextInput.dart';
 import 'package:flutter/material.dart';
 
 class Cadastro extends StatefulWidget {
@@ -11,8 +13,28 @@ class Cadastro extends StatefulWidget {
 
 class _CadastroState extends State<Cadastro> {
   final _formKey = GlobalKey<FormState>();
-  String _name = "";
-  String _email = "";
+  TextEditingController txtName = TextEditingController();
+  TextEditingController txtEmail = TextEditingController();
+
+  validateName(String value) {
+    if (value.isEmpty) {
+      return 'Por favor, insira seu nome';
+    }
+  }
+
+  validadeEmail(String value) {
+    if (!value.contains('@')) {
+      return 'E-mail inválido';
+    }
+  }
+
+  saveButton() {
+    if (_formKey.currentState!.validate()) {
+      print('Nome: ${txtName.text}');
+      print('E-mail: ${txtEmail.text}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,46 +44,11 @@ class _CadastroState extends State<Cadastro> {
           key: _formKey,
           child: Column(
             children: [
-              TextFormField(
-                decoration: const InputDecoration(labelText: 'Nome'),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Por favor, insira seu nome';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _name = value!;
-                },
-              ),
+              MyTextInput(labelText: 'Nome', validator:(value)=>validateName(value!), txtController: txtName),
               const SizedBox(height: 10),
-              TextFormField(
-                decoration: const InputDecoration(labelText: 'E-mail'),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Por favor, insira seu e-mail';
-                  }
-                  if (!value.contains('@')) {
-                    return 'E-mail inválido';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  _email = value!;
-                },
-              ),
+              MyTextInput(labelText: 'Email', validator: (value) => validadeEmail(value!), txtController: txtEmail),
               const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    // Fazer algo com os valores do formulário
-                    print('Nome: $_name');
-                    print('E-mail: $_email');
-                  }
-                },
-                child: const Text('Enviar'),
-              ),
+              MyButton(labelText: 'Enviar', pressed: saveButton)
             ],
           ),
         ),
