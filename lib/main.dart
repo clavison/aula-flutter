@@ -1,3 +1,4 @@
+import 'package:aula_flutter/cadastro.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,22 +24,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          appBar: AppBar(title: const Text("App Bar")),
-          body: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(txtDigitado, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.pink)),
-                TextField(controller: txtController, keyboardType: TextInputType.number),
-                ElevatedButton(onPressed: cliqueBotao, child: const Text('OK')),
-              ],
-            ),
-          )),
+      home: Cadastro(),
     );
   }
 }
